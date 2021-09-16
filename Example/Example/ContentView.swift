@@ -19,7 +19,7 @@ struct ContentView: View {
                     List {
                         Section {
                             ForEach(0..<20, id: \.self) { index in
-                                NavigationLink(destination: PushedView(text: "Pushed number \(index)")) {
+                                NavigationLink(destination: PushedView(text: "Pushed number \(index)").hideTabViewBar()) {
                                     Text("\(index)")
                                 }
                             }

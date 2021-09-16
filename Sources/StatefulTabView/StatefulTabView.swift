@@ -18,6 +18,8 @@ public struct StatefulTabView: View {
     
     @State private var stateIndex: Int = 0
     @Binding private var bindableIndex: Int
+    
+    @StateObject private var tabBarVisiblity = TabViewBarVisibility()
 
     private var useBindableIndex: Bool = false
     
@@ -42,6 +44,7 @@ public struct StatefulTabView: View {
                          tabBarConfiguration: tabBarConfiguration,
                          selectedIndex: useBindableIndex ? $bindableIndex : $stateIndex)
             .edgesIgnoringSafeArea(.all)
+            .environmentObject(tabBarVisiblity)
     }
 }
 

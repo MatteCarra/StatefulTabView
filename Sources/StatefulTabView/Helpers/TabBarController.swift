@@ -23,6 +23,7 @@ struct TabBarController: UIViewControllerRepresentable {
     var tabBarConfiguration: TabBarBackgroundConfiguration?
     
     @Binding var selectedIndex: Int
+    @EnvironmentObject var barVisibility: TabViewBarVisibility
     
     func makeUIViewController(context: Context) -> UITabBarController {
         let tabBarController = UITabBarController()
@@ -36,7 +37,7 @@ struct TabBarController: UIViewControllerRepresentable {
 
     func updateUIViewController(_ tabBarController: UITabBarController, context: Context) {
         tabBarController.selectedIndex = selectedIndex
-        
+        tabBarController.tabBar.isHidden = barVisibility.hide
         tabBarItems.forEach { tab in
             guard let index = tabBarItems.firstIndex(where: { $0.barItem == tab.barItem }), let controllers = tabBarController.viewControllers else { return }
             
