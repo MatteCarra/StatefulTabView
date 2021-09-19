@@ -29,7 +29,7 @@ public struct Tab {
             selectedImage = UIImage(named: selectedImageName)
         }
         
-        barItem = UITabBarItem(title: title, image: UIImage(named: imageName), selectedImage: selectedImage)
+        barItem = UITabBarItem(title: title != nil ? NSLocalizedString(title!, comment: "") : nil, image: UIImage(named: imageName), selectedImage: selectedImage)
         
         self.view = AnyView(content())
     }
@@ -49,7 +49,7 @@ public struct Tab {
             selectedImage = UIImage(systemName: selectedSystemImageName)
         }
         
-        barItem = UITabBarItem(title: title, image: UIImage(systemName: systemImageName), selectedImage: selectedImage)
+        barItem = UITabBarItem(title: title != nil ? NSLocalizedString(title!, comment: "") : nil, image: UIImage(systemName: systemImageName), selectedImage: selectedImage)
         
         self.view = AnyView(content())
     }
@@ -63,7 +63,7 @@ public struct Tab {
         
         self.badgeValue = badgeValue
         
-        barItem = UITabBarItem(title: title, image: image, selectedImage: selectedImage)
+        barItem = UITabBarItem(title: title != nil ? NSLocalizedString(title!, comment: "") : nil, image: image, selectedImage: selectedImage)
         
         self.view = AnyView(content())
     }
